@@ -58,7 +58,6 @@ class _StartPageState extends State<StartPage> {
                   SizedBox(
                     height: 16,
                   ),
-
                   TextFieldWidget(
                     controller: polindromeController,
                     title: "Polindrome",
@@ -80,26 +79,6 @@ class _StartPageState extends State<StartPage> {
                     callback: () {},
                     active: true,
                   ),
-                  // SizedBox(
-                  //   height: 32,
-                  // ),
-                  // Center(
-                  //     child: RichText(
-                  //   text: TextSpan(children: [
-                  //     TextSpan(text: "Baru di sini?", style: darkTextFont),
-                  //     TextSpan(
-                  //       text: " Buat Akun",
-                  //       style: TextStyle(
-                  //           color: mainColor,
-                  //           fontWeight: FontWeight.w700,
-                  //           fontSize: 16),
-                  //       recognizer: TapGestureRecognizer()..onTap = () async {},
-                  //     ),
-                  //   ]),
-                  // )),
-                  // SizedBox(
-                  //   height: 32,
-                  // ),
                 ],
               ),
             ),
