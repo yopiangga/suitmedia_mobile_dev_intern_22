@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:suitmedia_mobile_dev_intern_22/providers/providers.dart';
-import 'package:suitmedia_mobile_dev_intern_22/ui/pages/start_page.dart';
+import 'package:suitmedia_mobile_dev_intern_22/ui/pages/pages.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,13 +18,12 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => UserProvider()),
       ],
       child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Suitmedia Mobile Dev Intern 22',
-        theme: ThemeData(
-          splashColor: Colors.white,
-        ),
-        home: const StartPage(),
-      ),
+          debugShowCheckedModeBanner: false,
+          title: 'Suitmedia Mobile Dev Intern 22',
+          theme: ThemeData(
+            splashColor: Colors.white,
+          ),
+          home: const StartPage()),
     );
   }
 }
