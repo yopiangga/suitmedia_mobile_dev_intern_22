@@ -13,14 +13,16 @@ class _ThirdPageState extends State<ThirdPage> {
   bool load = true;
   UserServices userServices = UserServices();
   List<UserModel> users = [];
+  GetUserModel? getUserModel = GetUserModel();
 
   void initState() {
     super.initState();
-    fetchData();
+    fetchData(1);
   }
 
-  void fetchData() async {
-    users = await userServices.getUsers();
+  void fetchData(page) async {
+    getUserModel = await userServices.getUsers(page: page);
+    users = [...users, ...getUserModel!.data];
 
     if (this.mounted) {
       setState(() {
@@ -33,6 +35,22 @@ class _ThirdPageState extends State<ThirdPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBarWidget(context, "Third Screen"),
+      bottomNavigationBar: Container(
+        color: Colors.white,
+        padding: EdgeInsets.symmetric(
+            horizontal: defaultMargin, vertical: defaultMargin),
+        child: ButtonWidget(
+          title: "Load More Data",
+          active: getUserModel!.page < getUserModel!.totalPages,
+          callback: () {
+            if (getUserModel != null) {
+              if (getUserModel!.page < getUserModel!.totalPages) {
+                fetchData(getUserModel!.page + 1);
+              }
+            }
+          },
+        ),
+      ),
       body: ListView(
         children: [
           SizedBox(

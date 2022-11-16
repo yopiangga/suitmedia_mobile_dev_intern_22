@@ -3,8 +3,8 @@ part of 'services.dart';
 class UserServices {
   UserServices();
 
-  Future<List<UserModel>> getUsers({http.Client? client}) async {
-    String url = baseUrl + "/api/users";
+  Future<GetUserModel?> getUsers({http.Client? client, page = 1}) async {
+    String url = baseUrl + "/api/users?page=" + page.toString();
 
     client ??= http.Client();
 
@@ -13,7 +13,7 @@ class UserServices {
       "Content-Type": "application/json",
     });
 
-    List<UserModel> temp = [];
+    GetUserModel? temp;
 
     if (response.statusCode != 200) {
       return temp;
@@ -21,9 +21,7 @@ class UserServices {
 
     var data = json.decode(response.body);
 
-    for (var item in data["data"]) {
-      temp.add(UserModel.fromJson(item));
-    }
+    temp = GetUserModel.fromJson(data);
 
     return temp;
   }
