@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.suitmedia_mobile_dev_intern_22">
    <application
-        android:label="suitmedia_mobile_dev_intern_22"
+        android:label="Suitmedia Mobile"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
