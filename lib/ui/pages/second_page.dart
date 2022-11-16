@@ -1,13 +1,16 @@
 part of 'pages.dart';
 
 class SecondPage extends StatefulWidget {
-  const SecondPage({Key? key}) : super(key: key);
+  UserModel? user;
+  SecondPage({this.user});
 
   @override
   State<SecondPage> createState() => _SecondPageState();
 }
 
 class _SecondPageState extends State<SecondPage> {
+  UserModel selectedUser = UserModel();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +27,9 @@ class _SecondPageState extends State<SecondPage> {
               children: [
                 Text("Welcome", style: darkTextFont.copyWith(fontSize: 12)),
                 Text(
-                  "Alfian Prisma Yopiangga",
+                  widget.user == null
+                      ? "User"
+                      : widget.user!.firstName + " " + widget.user!.lastName,
                   style: darkTextFont.copyWith(fontWeight: FontWeight.bold),
                 )
               ],
@@ -38,7 +43,9 @@ class _SecondPageState extends State<SecondPage> {
                   horizontal: defaultMargin, vertical: defaultMargin),
               child: Center(
                 child: Text(
-                  "Selected User Name",
+                  selectedUser == null
+                      ? "No User Selected"
+                      : selectedUser.firstName + " " + selectedUser.lastName,
                   textAlign: TextAlign.center,
                   style: darkTextFont.copyWith(
                       fontWeight: FontWeight.bold, fontSize: 20),
@@ -55,7 +62,18 @@ class _SecondPageState extends State<SecondPage> {
         child: ButtonWidget(
           title: "Choose a User",
           active: true,
-          callback: () {},
+          callback: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ThirdPage(
+                          callback: (user) {
+                            setState(() {
+                              selectedUser = user;
+                            });
+                          },
+                        )));
+          },
         ),
       ),
     );

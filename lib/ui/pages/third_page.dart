@@ -1,7 +1,9 @@
 part of 'pages.dart';
 
 class ThirdPage extends StatefulWidget {
-  const ThirdPage({Key? key}) : super(key: key);
+  Function? callback;
+
+  ThirdPage({this.callback});
 
   @override
   State<ThirdPage> createState() => _ThirdPageState();
@@ -18,17 +20,20 @@ class _ThirdPageState extends State<ThirdPage> {
             height: 10,
           ),
           CardUserWidget(
+            callback: (el) => {widget.callback!(el), Navigator.pop(context)},
             user: UserModel(
-                firstName: "Alfian Prisma",
-                lastName: "Yopiangga",
-                email: "example@email.com",
-                avatar:
-                    "https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745"),
+              firstName: "Alfian Prisma",
+              lastName: "Yopiangga 1",
+              email: "example@email.com",
+              avatar:
+                  "https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745",
+            ),
           ),
           CardUserWidget(
+            callback: (el) => {widget.callback!(el), Navigator.pop(context)},
             user: UserModel(
                 firstName: "Alfian Prisma",
-                lastName: "Yopiangga",
+                lastName: "Yopiangga 2",
                 email: "example@email.com",
                 avatar:
                     "https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745"),

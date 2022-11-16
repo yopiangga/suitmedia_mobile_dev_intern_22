@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             splashColor: Colors.white,
           ),
-          home: const ThirdPage()),
+          home: const StartPage()),
     );
   }
 }

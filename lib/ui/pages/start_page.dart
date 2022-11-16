@@ -68,7 +68,15 @@ class _StartPageState extends State<StartPage> {
                   ),
                   ButtonWidget(
                     title: "CHECK",
-                    callback: () {},
+                    callback: () {
+                      bool res = checkPalindrome(polindromeController.text);
+
+                      if (res) {
+                        FlushbarWidget(context, "Polindrome", res);
+                      } else {
+                        FlushbarWidget(context, "Bukan Polindrome", res);
+                      }
+                    },
                     active: true,
                   ),
                   SizedBox(
@@ -76,7 +84,17 @@ class _StartPageState extends State<StartPage> {
                   ),
                   ButtonWidget(
                     title: "NEXT",
-                    callback: () {},
+                    callback: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SecondPage(
+                            user: UserModel(
+                                firstName: nameController.text, lastName: ""),
+                          ),
+                        ),
+                      );
+                    },
                     active: true,
                   ),
                 ],

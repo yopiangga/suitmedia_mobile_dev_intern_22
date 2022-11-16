@@ -1,7 +1,8 @@
 part of 'methods.dart';
 
 bool checkPalindrome(str) {
-  str = str.toLowerCase().replaceAll(new RegExp(r'/[\W_]/g'), '');
-  String reversed = str.split('').reverse().join();
+  String temp;
+  temp = str.toLowerCase().replaceAll(new RegExp(r'/[\W_]/g'), '');
+  String reversed = temp.split('').reversed.join('');
   return str == reversed;
 }
